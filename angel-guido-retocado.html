@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Angel Guido Art Project</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#F8F6F2;
+--text:#222222;
+--line:#D9D6CF;
+--blue:#8EAFC9;
+--header-h:78px;
+}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+html{
+scroll-behavior:smooth;
+scroll-padding-top:var(--header-h); /* evita que el header fijo tape el contenido al saltar a una sección */
+}
+body{
+background:var(--bg);
+color:var(--text);
+font-family:"Inter",sans-serif;
+line-height:1.7;
+}
+section{
+max-width:1200px;
+margin:auto;
+padding:70px 40px; /* antes 120px 40px */
+scroll-margin-top:var(--header-h);
+}
+header{
+position:fixed;
+width:100%;
+height:var(--header-h);
+display:flex;
+align-items:center;
+background:rgba(248,246,242,.92);
+backdrop-filter:blur(10px);
+border-bottom:1px solid var(--line);
+z-index:100;
+}
+nav{
+width:100%;
+max-width:1200px;
+margin:auto;
+padding:0 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+.brand{
+display:flex;
+align-items:center;
+gap:14px;
+}
+.brand img{
+height:38px;
+width:auto;
+display:block;
+}
+nav .links a{
+text-decoration:none;
+color:#222;
+margin-left:32px;
+font-size:.9rem;
+letter-spacing:.12em;
+text-transform:uppercase;
+}
+.hero{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding-top:var(--header-h); /* compensa el header fijo */
+}
+.hero img{
+width:180px; /* antes 260px, ya que ahora también está en el header */
+margin-bottom:40px;
+}
+.hero h1{
+font-family:"Cormorant Garamond",serif;
+font-size:4.8rem;
+font-weight:700;
+max-width:900px;
+line-height:1;
+margin-bottom:30px;
+}
+.hero p{
+max-width:650px;
+font-size:1.1rem;
+}
+.person{
+display:flex;
+align-items:center;
+gap:40px;
+padding:40px 0;
+border-top:1px solid var(--line);
+}
+.person:first-of-type{
+border-top:none;
+}
+.person img{
+width:180px;
+height:180px;
+object-fit:cover;
+flex-shrink:0;
+border-radius:4px;
+}
+.person h2{
+font-family:"Cormorant Garamond",serif;
+font-size:3rem;
+margin-bottom:10px;
+}
+.role{
+text-transform:uppercase;
+letter-spacing:.15em;
+font-size:.75rem;
+margin-bottom:25px;
+color:#777;
+}
+.gallery{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:30px;
+}
+.gallery img{
+width:100%;
+display:block;
+transition:.4s;
+}
+.gallery img:hover{
+transform:scale(1.02);
+}
+footer{
+padding:70px 40px; /* antes 100px 40px */
+text-align:center;
+border-top:1px solid var(--line);
+}
+@media(max-width:900px){
+.hero h1{
+font-size:3rem;
+}
+.person{
+flex-direction:column;
+align-items:flex-start;
+gap:20px;
+padding:40px 0;
+}
+.person img{
+width:140px;
+height:140px;
+}
+.gallery{
+grid-template-columns:1fr;
+}
+nav .links{
+display:none;
+}
+section{
+padding:50px 24px;
+}
+}
+</style>
+</head>
+<body>
+<header>
+<nav>
+<div class="brand">
+<img src="assets/logo.png" alt="Angel Guido Art Project">
+</div>
+<div class="links">
+<a href="#proyecto">Proyecto</a>
+<a href="#legado">Legado</a>
+<a href="#archivo">Archivo</a>
+<a href="#contacto">Contacto</a>
+</div>
+</nav>
+</header>
+<section class="hero">
+<img src="assets/logo.png" alt="">
+<h1>
+Más de un siglo de una familia que contribuyó a construir la cultura argentina.
+</h1>
+<p>
+Arquitectura, literatura, cine, artes visuales y patrimonio cultural reunidos en un único archivo digital.
+</p>
+</section>
+<section id="proyecto">
+<h2 style="font-family:Cormorant Garamond;font-size:3rem;margin-bottom:20px">
+El Proyecto
+</h2>
+<p>
+Desde 2008, Angel Guido Art Project preserva el legado artístico e intelectual de la familia Guido. Hoy inicia una nueva etapa mediante la transformación digital de su archivo, poniendo a disposición documentos, obras y memorias para investigadores y nuevas generaciones.
+
+</p>
+</section>
+<section id="legado">
+<div class="person">
+<img src="assets/angel-guido.webp">
+<div>
+<div class="role">Arquitecto</div>
+<h2>Ángel Guido</h2>
+<p>
+Arquitecto del Monumento Nacional a la Bandera y una de las figuras más relevantes de la arquitectura argentina del siglo XX.
+</p>
+</div>
+</div>
+<div class="person">
+<div>
+<div class="role">Escritora</div>
+<h2>Beatriz Guido</h2>
+<p>
+Novelista y guionista. Una de las grandes voces de la literatura argentina.
+</p>
+</div>
+<img src="assets/beatriz-guido.jpeg">
+</div>
+<div class="person">
+<img src="assets/leopoldo-torre-nilsson.webp">
+<div>
+<div class="role">Director de cine</div>
+<h2>Leopoldo Torre Nilsson</h2>
+<p>
+Pionero del cine moderno argentino y referente internacional.
+</p>
+</div>
+</div>
+<div class="person">
+<div>
+<div class="role">Curadora</div>
+<h2>Adriana Martínez Vivot</h2>
+<p>
+Impulsora del Angel Guido Art Project y responsable de la preservación del archivo desde 2008.
+</p>
+</div>
+<img src="assets/adriana-martinez-vivot.jpg">
+</div>
+<div class="person">
+<img src="assets/macarena.jpg">
+<div>
+<div class="role">Digital Heritage Transformation</div>
+<h2>Macarena Boucherie</h2>
+<p>
+Lidera la transformación digital del archivo familiar para acercar este legado a nuevas generaciones.
+</p>
+</div>
+</div>
+</section>
+<section id="archivo">
+<h2 style="font-family:Cormorant Garamond;font-size:3rem;margin-bottom:60px">
+Archivo
+</h2>
+<div class="gallery">
+<img src="assets/monumento.jpg">
+<img src="assets/cuadro-familiar.jpg">
+</div>
+</section>
+<footer id="contacto">
+<h2 style="font-family:Cormorant Garamond;font-size:2.8rem">
+Una historia que continúa.
+</h2>
+<p style="margin-top:20px">
+Contacto<br>
+info@angelguidoartproject.com
+</p>
+</footer>
+</body>
+</html>
