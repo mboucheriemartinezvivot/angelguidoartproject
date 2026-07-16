@@ -1,868 +1,433 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Ángel Guido Art Project. Más de un siglo de pensamiento, creación y compromiso con la cultura argentina.">
-  <title>Ángel Guido Art Project</title>
-
-  <style>
-    :root {
-      --paper: #f4f0e7;
-      --paper-light: #fbf9f4;
-      --white: #ffffff;
-      --sky: #a6d5de;
-      --sky-soft: #dcecef;
-      --sky-deep: #78aeb9;
-      --ink: #3f3f3b;
-      --muted: #79746d;
-      --line: rgba(63, 63, 59, .22);
-      --serif: "Times New Roman", Times, serif;
-      --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      --max: 1440px;
-      --gutter: clamp(22px, 5vw, 76px);
-    }
-
-    * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      background: var(--paper);
-      color: var(--ink);
-      font-family: var(--sans);
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-
-    img {
-      display: block;
-      width: 100%;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(100%, var(--max));
-      margin: 0 auto;
-      padding-inline: var(--gutter);
-    }
-
-    .eyebrow {
-      margin: 0 0 18px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-    }
-
-    .display {
-      margin: 0;
-      font-family: var(--serif);
-      font-size: clamp(46px, 7vw, 104px);
-      font-weight: 400;
-      line-height: .92;
-      letter-spacing: -.05em;
-    }
-
-    .display em {
-      color: var(--sky-deep);
-      font-style: normal;
-    }
-
-    .intro-copy {
-      max-width: 690px;
-      margin: 30px 0 0;
-      font-family: var(--serif);
-      font-size: clamp(21px, 2.15vw, 31px);
-      line-height: 1.42;
-    }
-
-    /* Header */
-    .site-header {
-      position: fixed;
-      z-index: 50;
-      inset: 0 0 auto;
-      background: rgba(244, 240, 231, .92);
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(14px);
-    }
-
-    .nav {
-      min-height: 74px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 30px;
-    }
-
-    .nav-logo {
-      width: min(340px, 52vw);
-      height: 38px;
-      object-fit: contain;
-      object-position: left center;
-      filter: contrast(.83);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      font-size: 11px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-    }
-
-    .nav-links a {
-      padding: 8px 0;
-      border-bottom: 1px solid transparent;
-    }
-
-    .nav-links a:hover {
-      border-color: currentColor;
-    }
-
-    /* Hero */
-    .hero {
-      min-height: 100svh;
-      padding-top: 74px;
-      background: var(--paper-light);
-    }
-
-    .hero-grid {
-      min-height: calc(100svh - 74px);
-      display: grid;
-      grid-template-columns: .92fr 1.08fr;
-    }
-
-    .hero-copy {
-      padding: clamp(58px, 8vw, 120px) var(--gutter) clamp(48px, 7vw, 95px);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      border-right: 1px solid var(--line);
-    }
-
-    .hero-logo {
-      width: min(570px, 100%);
-      margin-bottom: clamp(54px, 8vw, 105px);
-      filter: contrast(.82);
-    }
-
-    .hero h1 {
-      max-width: 650px;
-      margin: 0;
-      font-family: var(--serif);
-      font-size: clamp(53px, 7.6vw, 116px);
-      font-weight: 400;
-      line-height: .87;
-      letter-spacing: -.058em;
-    }
-
-    .hero h1 span {
-      display: block;
-      color: var(--sky-deep);
-    }
-
-    .hero-meta {
-      margin-top: 44px;
-      padding-top: 19px;
-      border-top: 1px solid var(--line);
-      font-size: 10px;
-      line-height: 1.7;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-    }
-
-    .hero-art {
-      position: relative;
-      min-height: 610px;
-      overflow: hidden;
-      background: var(--sky-soft);
-    }
-
-    .hero-art img {
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      mix-blend-mode: multiply;
-    }
-
-    .caption {
-      position: absolute;
-      left: 24px;
-      right: 24px;
-      bottom: 22px;
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      font-size: 9px;
-      line-height: 1.5;
-      letter-spacing: .11em;
-      text-transform: uppercase;
-    }
-
-    .caption span {
-      background: rgba(251, 249, 244, .92);
-      padding: 9px 12px;
-    }
-
-    /* Project */
-    .project {
-      padding-block: clamp(95px, 13vw, 185px);
-    }
-
-    .project-grid {
-      display: grid;
-      grid-template-columns: .62fr 1.38fr;
-      gap: clamp(45px, 10vw, 145px);
-      align-items: start;
-    }
-
-    .project blockquote {
-      margin: 0;
-      font-family: var(--serif);
-      font-size: clamp(40px, 5.4vw, 78px);
-      line-height: 1;
-      letter-spacing: -.04em;
-    }
-
-    .project blockquote em {
-      color: var(--sky-deep);
-      font-style: normal;
-    }
-
-    .project-text {
-      max-width: 650px;
-      margin-top: 46px;
-      font-family: var(--serif);
-      font-size: clamp(20px, 2vw, 28px);
-      line-height: 1.48;
-    }
-
-    .project-text p { margin: 0 0 24px; }
-
-    /* Values */
-    .values {
-      background: var(--sky-soft);
-      border-block: 1px solid var(--line);
-    }
-
-    .values-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    .value {
-      min-height: 280px;
-      padding: 34px 28px 38px;
-      border-right: 1px solid var(--line);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .value:first-child { border-left: 1px solid var(--line); }
-
-    .value-number {
-      color: var(--sky-deep);
-      font-family: var(--serif);
-      font-size: 24px;
-    }
-
-    .value h3 {
-      margin: 56px 0 10px;
-      font-family: var(--serif);
-      font-size: 32px;
-      font-weight: 400;
-    }
-
-    .value p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.58;
-    }
-
-    /* Saga */
-    .saga {
-      padding-block: clamp(100px, 13vw, 185px);
-      background: var(--paper-light);
-    }
-
-    .saga-header {
-      display: grid;
-      grid-template-columns: .58fr 1.42fr;
-      gap: 50px;
-      margin-bottom: 66px;
-    }
-
-    .saga-frame {
-      margin: 0;
-      padding: clamp(12px, 2vw, 26px);
-      background: var(--white);
-      border: 1px solid var(--line);
-    }
-
-    .saga-frame img {
-      max-height: 940px;
-      object-fit: contain;
-    }
-
-    .saga-frame figcaption {
-      display: flex;
-      justify-content: space-between;
-      gap: 25px;
-      padding: 15px 3px 0;
-      color: var(--muted);
-      font-size: 10px;
-      line-height: 1.5;
-      letter-spacing: .11em;
-      text-transform: uppercase;
-    }
-
-    /* Family */
-    .family {
-      padding-block: clamp(100px, 13vw, 185px);
-    }
-
-    .family-header {
-      margin-bottom: 66px;
-    }
-
-    .family-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-    }
-
-    .person {
-      margin: 0;
-    }
-
-    .person-image {
-      aspect-ratio: 3 / 4;
-      overflow: hidden;
-      background: var(--sky-soft);
-    }
-
-    .person-image img {
-      height: 100%;
-      object-fit: cover;
-      filter: grayscale(100%);
-      transition: transform .55s ease, filter .35s ease;
-    }
-
-    .person:hover img {
-      transform: scale(1.025);
-      filter: grayscale(20%);
-    }
-
-    .person figcaption {
-      padding-top: 17px;
-    }
-
-    .person small {
-      display: block;
-      color: var(--sky-deep);
-      font-size: 10px;
-      letter-spacing: .13em;
-      text-transform: uppercase;
-    }
-
-    .person h3 {
-      margin: 8px 0 4px;
-      font-family: var(--serif);
-      font-size: clamp(24px, 2.4vw, 36px);
-      font-weight: 400;
-      line-height: 1;
-    }
-
-    .person p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    /* Quote */
-    .quote {
-      padding-block: clamp(95px, 12vw, 170px);
-      background: var(--sky);
-    }
-
-    .quote p {
-      max-width: 1120px;
-      margin: 0;
-      font-family: var(--serif);
-      font-size: clamp(40px, 6.6vw, 94px);
-      line-height: .98;
-      letter-spacing: -.045em;
-    }
-
-    .quote small {
-      display: block;
-      margin-top: 36px;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-    }
-
-    /* Archive */
-    .archive {
-      padding-block: clamp(100px, 13vw, 185px);
-    }
-
-    .archive-header {
-      display: grid;
-      grid-template-columns: 1fr .72fr;
-      gap: 60px;
-      align-items: end;
-      margin-bottom: 58px;
-    }
-
-    .archive-header p {
-      max-width: 500px;
-      margin: 0;
-      font-family: var(--serif);
-      font-size: clamp(19px, 2vw, 28px);
-      line-height: 1.45;
-    }
-
-    .archive-grid {
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 18px;
-    }
-
-    .archive-card {
-      margin: 0;
-      padding: 15px;
-      background: var(--paper-light);
-      border: 1px solid var(--line);
-    }
-
-    .archive-card img {
-      aspect-ratio: 4 / 3.2;
-      object-fit: cover;
-    }
-
-    .archive-card figcaption {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      padding-top: 13px;
-      color: var(--muted);
-      font-size: 9px;
-      line-height: 1.5;
-      letter-spacing: .11em;
-      text-transform: uppercase;
-    }
-
-    /* Continuity / Credits */
-    .continuity {
-      padding-block: clamp(90px, 12vw, 160px);
-      background: var(--paper-light);
-      border-top: 1px solid var(--line);
-    }
-
-    .continuity-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(50px, 10vw, 140px);
-    }
-
-    .continuity-copy {
-      max-width: 620px;
-      margin: 26px 0 0;
-      font-family: var(--serif);
-      font-size: clamp(21px, 2.1vw, 30px);
-      line-height: 1.45;
-    }
-
-    .credits {
-      align-self: end;
-      border-top: 1px solid var(--line);
-    }
-
-    .credit {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      padding: 20px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .credit span {
-      color: var(--muted);
-      font-size: 10px;
-      letter-spacing: .13em;
-      text-transform: uppercase;
-    }
-
-    .credit strong {
-      font-family: var(--serif);
-      font-size: 20px;
-      font-weight: 400;
-    }
-
-    /* Footer */
-    footer {
-      padding-block: 54px;
-      background: var(--paper);
-      border-top: 1px solid var(--line);
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 45px;
-      align-items: end;
-    }
-
-    .footer-logo {
-      width: min(520px, 100%);
-      filter: contrast(.82);
-    }
-
-    .footer-meta {
-      text-align: right;
-      font-size: 12px;
-      line-height: 1.85;
-    }
-
-    .footer-bottom {
-      margin-top: 45px;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
-      display: flex;
-      justify-content: space-between;
-      gap: 25px;
-      color: var(--muted);
-      font-size: 9px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    @media (max-width: 1000px) {
-      .nav-links { display: none; }
-
-      .hero-grid,
-      .project-grid,
-      .saga-header,
-      .archive-header,
-      .continuity-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-copy { border-right: 0; }
-      .hero-art { min-height: 70svh; }
-      .values-grid { grid-template-columns: repeat(2, 1fr); }
-      .family-grid { grid-template-columns: repeat(2, 1fr); }
-      .archive-grid { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 640px) {
-      .site-header { position: absolute; }
-      .nav-logo { width: 250px; }
-      .hero { padding-top: 74px; }
-      .hero-art { min-height: 52svh; }
-      .caption { left: 12px; right: 12px; bottom: 12px; }
-      .values-grid,
-      .family-grid {
-        grid-template-columns: 1fr;
-      }
-      .value,
-      .value:first-child {
-        min-height: auto;
-        border-left: 1px solid var(--line);
-        border-bottom: 1px solid var(--line);
-      }
-      .saga-frame figcaption,
-      .archive-card figcaption,
-      .credit,
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-      .saga-frame figcaption,
-      .archive-card figcaption {
-        flex-direction: column;
-        gap: 5px;
-      }
-      .footer-meta { text-align: left; }
-      .footer-bottom { flex-direction: column; gap: 8px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { transition: none !important; }
-    }
-  </style>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Angel Guido Art Project</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+
+--bg:#F8F6F2;
+--text:#222222;
+--line:#D9D6CF;
+--blue:#8EAFC9;
+
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+
+background:var(--bg);
+color:var(--text);
+font-family:"Inter",sans-serif;
+line-height:1.7;
+
+}
+
+section{
+
+max-width:1200px;
+margin:auto;
+padding:120px 40px;
+
+}
+
+header{
+
+position:fixed;
+width:100%;
+background:rgba(248,246,242,.92);
+backdrop-filter:blur(10px);
+border-bottom:1px solid var(--line);
+
+}
+
+nav{
+
+max-width:1200px;
+margin:auto;
+padding:22px 40px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+}
+
+nav a{
+
+text-decoration:none;
+color:#222;
+margin-left:32px;
+font-size:.9rem;
+letter-spacing:.12em;
+text-transform:uppercase;
+
+}
+
+.hero{
+
+min-height:100vh;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+
+}
+
+.hero img{
+
+width:260px;
+margin-bottom:50px;
+
+}
+
+.hero h1{
+
+font-family:"Cormorant Garamond",serif;
+font-size:4.8rem;
+font-weight:700;
+max-width:900px;
+line-height:1;
+
+margin-bottom:30px;
+
+}
+
+.hero p{
+
+max-width:650px;
+
+font-size:1.1rem;
+
+}
+
+.person{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:80px;
+align-items:center;
+
+padding:140px 0;
+
+border-top:1px solid var(--line);
+
+}
+
+.person img{
+
+width:100%;
+
+}
+
+.person h2{
+
+font-family:"Cormorant Garamond",serif;
+font-size:3rem;
+
+margin-bottom:10px;
+
+}
+
+.role{
+
+text-transform:uppercase;
+
+letter-spacing:.15em;
+
+font-size:.75rem;
+
+margin-bottom:25px;
+
+color:#777;
+
+}
+
+.gallery{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:30px;
+
+}
+
+.gallery img{
+
+width:100%;
+
+display:block;
+
+transition:.4s;
+
+}
+
+.gallery img:hover{
+
+transform:scale(1.02);
+
+}
+
+footer{
+
+padding:100px 40px;
+
+text-align:center;
+
+border-top:1px solid var(--line);
+
+}
+
+@media(max-width:900px){
+
+.hero h1{
+
+font-size:3rem;
+
+}
+
+.person{
+
+grid-template-columns:1fr;
+
+gap:40px;
+
+}
+
+.gallery{
+
+grid-template-columns:1fr;
+
+}
+
+nav{
+
+display:none;
+
+}
+
+}
+
+</style>
+
 </head>
 
 <body>
-  <header class="site-header">
-    <div class="container nav">
-      <a href="#inicio" aria-label="Ir al inicio">
-        <img class="nav-logo" src="assets/logo.png" alt="Ángel Guido Art Project">
-      </a>
 
-      <nav class="nav-links" aria-label="Navegación principal">
-        <a href="#proyecto">El proyecto</a>
-        <a href="#saga">Saga cultural</a>
-        <a href="#familia">Familia</a>
-        <a href="#archivo">Colección y archivo</a>
-      </nav>
-    </div>
-  </header>
+<header>
 
-  <main>
-    <section class="hero" id="inicio">
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <div>
-            <img class="hero-logo" src="assets/logo.png" alt="Ángel Guido Art Project">
-            <p class="eyebrow">Patrimonio · Pensamiento · Cultura argentina</p>
-            <h1>
-              Más de un siglo de creación
-              <span>que continúa.</span>
-            </h1>
-          </div>
+<nav>
 
-          <p class="hero-meta">
-            Arquitectura · Literatura · Cine · Artes visuales · Gestión cultural
-          </p>
-        </div>
+<strong>ANGEL GUIDO ART PROJECT</strong>
 
-        <figure class="hero-art">
-          <img src="assets/monumento.jpg" alt="Dibujo del proyecto del Monumento Nacional a la Bandera">
-          <figcaption class="caption">
-            <span>Ángel Guido · Monumento Nacional a la Bandera</span>
-            <span>Archivo familiar</span>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
+<div>
 
-    <section class="project" id="proyecto">
-      <div class="container project-grid">
-        <p class="eyebrow">El proyecto</p>
+<a href="#proyecto">Proyecto</a>
+<a href="#legado">Legado</a>
+<a href="#archivo">Archivo</a>
+<a href="#contacto">Contacto</a>
 
-        <div>
-          <blockquote>
-            “La historia del arte descubre <em>su corazón.</em>”
-          </blockquote>
+</div>
 
-          <div class="project-text">
-            <p>
-              Ángel Guido Art Project preserva, investiga y proyecta el legado de una familia
-              profundamente ligada a la construcción de la cultura argentina.
-            </p>
-            <p>
-              Desde Ángel Guido hasta Adriana Martínez Vivot, cada generación encontró su propia
-              manera de crear, promover y sostener la vida cultural.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+</nav>
 
-    <section class="values" aria-label="Valores del proyecto">
-      <div class="container values-grid">
-        <article class="value">
-          <span class="value-number">01</span>
-          <div>
-            <h3>Identidad</h3>
-            <p>Una mirada americana, argentina y profundamente vinculada con su tiempo.</p>
-          </div>
-        </article>
+</header>
 
-        <article class="value">
-          <span class="value-number">02</span>
-          <div>
-            <h3>Creación</h3>
-            <p>La cultura entendida como pensamiento, obra y acción.</p>
-          </div>
-        </article>
+<section class="hero">
 
-        <article class="value">
-          <span class="value-number">03</span>
-          <div>
-            <h3>Patrimonio</h3>
-            <p>Conservar documentos, obras y memorias para volver a ponerlos en circulación.</p>
-          </div>
-        </article>
+<img src="assets/logo.png">
 
-        <article class="value">
-          <span class="value-number">04</span>
-          <div>
-            <h3>Continuidad</h3>
-            <p>Un mismo compromiso cultural expresado por distintas generaciones.</p>
-          </div>
-        </article>
-      </div>
-    </section>
+<h1>
+Más de un siglo de una familia que contribuyó a construir la cultura argentina.
+</h1>
 
-    <section class="saga" id="saga">
-      <div class="container">
-        <header class="saga-header">
-          <p class="eyebrow">Manifiesto visual</p>
-          <h2 class="display">
-            Una familia contada a través de sus <em>capas culturales.</em>
-          </h2>
-        </header>
+<p>
 
-        <figure class="saga-frame">
-          <img src="assets/saga-cultural.png" alt="Saga Cultural Familia Guido, obra de Dalila Puzzovio">
-          <figcaption>
-            <span>Dalila Puzzovio · Saga Cultural Familia Guido</span>
-            <span>2007</span>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
+Arquitectura, literatura, cine, artes visuales y patrimonio cultural reunidos en un único archivo digital.
 
-    <section class="family" id="familia">
-      <div class="container">
-        <header class="family-header">
-          <p class="eyebrow">Linaje cultural</p>
-          <h2 class="display">Una historia argentina a través de sus protagonistas.</h2>
-        </header>
+</p>
 
-        <div class="family-grid">
-          <figure class="person">
-            <div class="person-image">
-              <img src="assets/angel-guido.webp" alt="Ángel Guido">
-            </div>
-            <figcaption>
-              <small>Arquitectura y pensamiento</small>
-              <h3>Ángel Guido</h3>
-              <p>Arquitecto, historiador, ensayista y referente del pensamiento americanista.</p>
-            </figcaption>
-          </figure>
+</section>
 
-          <figure class="person">
-            <div class="person-image">
-              <img src="assets/beatriz-guido.jpeg" alt="Beatriz Guido">
-            </div>
-            <figcaption>
-              <small>Literatura y guion</small>
-              <h3>Beatriz Guido</h3>
-              <p>Escritora y guionista fundamental de la cultura argentina del siglo XX.</p>
-            </figcaption>
-          </figure>
+<section id="proyecto">
 
-          <figure class="person">
-            <div class="person-image">
-              <img src="assets/leopoldo-torre-nilsson.webp" alt="Leopoldo Torre Nilsson">
-            </div>
-            <figcaption>
-              <small>Cine</small>
-              <h3>Leopoldo Torre Nilsson</h3>
-              <p>Director y guionista que transformó el cine argentino y lo proyectó al mundo.</p>
-            </figcaption>
-          </figure>
+<h2 style="font-family:Cormorant Garamond;font-size:3rem;margin-bottom:20px">
 
-          <figure class="person">
-            <div class="person-image">
-              <img src="assets/adriana-martinez-vivot.jpg" alt="Adriana Martínez Vivot">
-            </div>
-            <figcaption>
-              <small>Galería y gestión cultural</small>
-              <h3>Adriana Martínez Vivot</h3>
-              <p>Fundadora de Ángel Guido Art Project y continuadora del legado familiar.</p>
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
+El Proyecto
 
-    <section class="quote">
-      <div class="container">
-        <p>
-          “Nuestra esperanza es que aquellas creaciones que nos representan surjan en toda América.”
-        </p>
-        <small>Ángel Guido · Redescubrimiento de América en el arte</small>
-      </div>
-    </section>
+</h2>
 
-    <section class="archive" id="archivo">
-      <div class="container">
-        <header class="archive-header">
-          <div>
-            <p class="eyebrow">Colección y archivo</p>
-            <h2 class="display">Obras, documentos y relatos que conservan una manera de mirar.</h2>
-          </div>
+<p>
 
-          <p>
-            Un patrimonio familiar en proceso de investigación, catalogación y apertura.
-          </p>
-        </header>
+Desde 2008, Angel Guido Art Project preserva el legado artístico e intelectual de la familia Guido. Hoy inicia una nueva etapa mediante la transformación digital de su archivo, poniendo a disposición documentos, obras y memorias para investigadores y nuevas generaciones.
 
-        <div class="archive-grid">
-          <figure class="archive-card">
-            <img src="assets/retrato-archivo.jpg" alt="Retrato de Ángel Guido con dedicatoria manuscrita">
-            <figcaption>
-              <span>Ángel Guido · Archivo familiar</span>
-              <span>1937</span>
-            </figcaption>
-          </figure>
+</p>
 
-          <figure class="archive-card">
-            <img src="assets/manifiesto.jpg" alt="Texto fundacional de Ángel Guido Art Project">
-            <figcaption>
-              <span>Texto fundacional</span>
-              <span>Buenos Aires · 2007</span>
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
+</section>
 
-    <section class="continuity">
-      <div class="container continuity-grid">
-        <div>
-          <p class="eyebrow">Continuidad</p>
-          <h2 class="display">Del archivo familiar al presente digital.</h2>
-          <p class="continuity-copy">
-            Esta nueva etapa transforma el patrimonio de Ángel Guido Art Project en una plataforma
-            viva, accesible y preparada para seguir creciendo.
-          </p>
-        </div>
+<section id="legado">
 
-        <div class="credits">
-          <div class="credit">
-            <span>Fundación del proyecto</span>
-            <strong>Adriana Martínez Vivot</strong>
-          </div>
-          <div class="credit">
-            <span>Digital Heritage Transformation</span>
-            <strong>Macarena Boucherie</strong>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+<div class="person">
 
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <img class="footer-logo" src="assets/logo.png" alt="Ángel Guido Art Project">
-        <div class="footer-meta">
-          Buenos Aires · Argentina<br>
-          <a href="mailto:info@angelguidoartproject.com">info@angelguidoartproject.com</a>
-        </div>
-      </div>
+<img src="assets/angel-guido.webp">
 
-      <div class="footer-bottom">
-        <span>© 2026 Ángel Guido Art Project</span>
-        <span>Archivo · Patrimonio · Cultura argentina</span>
-      </div>
-    </div>
-  </footer>
+<div>
+
+<div class="role">Arquitecto</div>
+
+<h2>Ángel Guido</h2>
+
+<p>
+
+Arquitecto del Monumento Nacional a la Bandera y una de las figuras más relevantes de la arquitectura argentina del siglo XX.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="person">
+
+<div>
+
+<div class="role">Escritora</div>
+
+<h2>Beatriz Guido</h2>
+
+<p>
+
+Novelista y guionista. Una de las grandes voces de la literatura argentina.
+
+</p>
+
+</div>
+
+<img src="assets/beatriz-guido.jpeg">
+
+</div>
+
+<div class="person">
+
+<img src="assets/leopoldo-torre-nilsson.webp">
+
+<div>
+
+<div class="role">Director de cine</div>
+
+<h2>Leopoldo Torre Nilsson</h2>
+
+<p>
+
+Pionero del cine moderno argentino y referente internacional.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="person">
+
+<div>
+
+<div class="role">Curadora</div>
+
+<h2>Adriana Martínez Vivot</h2>
+
+<p>
+
+Impulsora del Angel Guido Art Project y responsable de la preservación del archivo desde 2008.
+
+</p>
+
+</div>
+
+<img src="assets/adriana-martinez-vivot.jpg">
+
+</div>
+
+<div class="person">
+
+<img src="assets/macarena.jpg">
+
+<div>
+
+<div class="role">Digital Heritage Transformation</div>
+
+<h2>Macarena Boucherie</h2>
+
+<p>
+
+Lidera la transformación digital del archivo familiar para acercar este legado a nuevas generaciones.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="archivo">
+
+<h2 style="font-family:Cormorant Garamond;font-size:3rem;margin-bottom:60px">
+
+Archivo
+
+</h2>
+
+<div class="gallery">
+
+<img src="assets/monumento.jpg">
+
+<img src="assets/cuadro-familiar.jpg">
+
+</div>
+
+</section>
+
+<footer id="contacto">
+
+<h2 style="font-family:Cormorant Garamond;font-size:2.8rem">
+
+Una historia que continúa.
+
+</h2>
+
+<p style="margin-top:20px">
+
+Contacto<br>
+
+info@angelguidoartproject.com
+
+</p>
+
+</footer>
+
 </body>
+
 </html>
